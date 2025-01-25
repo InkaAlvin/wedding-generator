@@ -11,41 +11,65 @@
             height: 100vh;
             margin: 0;
             background-color: #f5f5f5;
+            font-size: 18px;
         }
         .container {
             text-align: center;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 12px;
+            min-width: 500px;
+        }
+        h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
         }
         input {
-            padding: 8px;
-            margin: 10px 0;
-            width: 250px;
+            padding: 15px;
+            margin: 20px 0;
+            width: 400px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
         }
         button {
-            padding: 8px 16px;
+            padding: 15px 30px;
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
-            margin: 0 5px;
+            margin: 10px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
         }
         #result {
-            margin-top: 20px;
-            padding: 10px;
+            margin-top: 30px;
+            padding: 20px;
             word-break: break-all;
+            font-size: 18px;
         }
         .copy-button {
             background-color: #2196F3;
+        }
+        .copy-button:hover {
+            background-color: #1976D2;
+        }
+        a {
+            color: #2196F3;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Wedding URL Generator</h2>
+        <h4>Alvin & Inka</h4>
         <input type="text" id="name" placeholder="Enter name" />
         <br>
         <button onclick="generateURL()">Generate URL</button>

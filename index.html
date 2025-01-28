@@ -72,33 +72,57 @@
         <h4>Alvin & Inka</h4>
         <input type="text" id="name" placeholder="Enter name" />
         <br>
-        <button onclick="generateURL()">Generate URL</button>
-        <button onclick="copyURL()" class="copy-button" id="copyBtn" style="display: none;">Copy URL</button>
+        <button onclick="generateURL()">Generate Invitation</button>
+        <button onclick="copyInvitation()" class="copy-button" id="copyBtn" style="display: none;">Copy Invitation</button>
+        
         <div id="result"></div>
     </div>
 
     <script>
-        function generateURL() {
-            const name = document.getElementById('name').value.trim();
-            const encodedName = encodeURIComponent(name);
-            const url = `http://alvinmlna.github.io/Wedding?to=${encodedName}`;
-            document.getElementById('result').innerHTML = `
-                <p>Generated URL:</p>
-                <a href="${url}" target="_blank">${url}</a>
-            `;
-            document.getElementById('copyBtn').style.display = 'inline-block';
-        }
+ function generateURL() {
+    const name = document.getElementById('name').value.trim();
+    const encodedName = encodeURIComponent(name);
+    const url = `http://alvinmlna.github.io/Wedding?to=${encodedName}`;
+    
+    const template = `*This invitation is limited only for whom invited person, kindly please do not spread it out.*
 
-        function copyURL() {
-            const urlText = document.querySelector('#result a').href;
-            navigator.clipboard.writeText(urlText).then(() => {
-                const copyBtn = document.getElementById('copyBtn');
-                copyBtn.textContent = 'Copied!';
-                setTimeout(() => {
-                    copyBtn.textContent = 'Copy URL';
-                }, 2000);
-            });
-        }
+Assalamu'alaikum Wr. Wb 
+
+Bismillahirahmanirrahim. Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i 
+
+${name}
+
+untuk menghadiri acara kami. 
+
+*Berikut link undangan kami*, untuk info lengkap dari acara bisa kunjungi : 
+${url}
+
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu. 
+
+*Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.*
+
+Terima kasih banyak atas perhatiannya. 
+
+Wassalamu'alaikum Wr. Wb. 
+
+Terima Kasih.`;
+
+    document.getElementById('result').innerHTML = `
+        <textarea style="display:none;" id="invitationText" readonly rows="15" cols="50">${template}</textarea>
+    `;
+    document.getElementById('copyBtn').style.display = 'inline-block';
+}
+
+function copyInvitation() {
+    const textArea = document.getElementById('invitationText');
+    navigator.clipboard.writeText(textArea.value).then(() => {
+        const copyBtn = document.getElementById('copyBtn');
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => {
+            copyBtn.textContent = 'Copy Invitation';
+        }, 2000);
+    });
+}
     </script>
 </body>
 </html>
